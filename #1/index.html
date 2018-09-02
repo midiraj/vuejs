@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Js</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+	<div id="app">
+		<!--First-->
+		<h1>{{ message }}</h1>
+		<!--Secong -->
+		<h1 v-bind:class = 'className'>{{ message }}</h1>
+		<!--Third-->
+		<h2 v-if='show'>Third Element</h2>
+		<!-- Fourth -->
+		<ol v-show='visible'>
+			<li v-for='list in lists'>{{list}}</li> <!-- v-if remove the element from the dom and v-show display none from the element -->
+		</ol>
+		<!-- Fifth -->
+		<ul>
+			<li v-for='list in list1'>{{list.name}}</li>
+		</ul>
+		<!--Sixth-->
+		<input  type="text" name="" v-model='message'>
+		<!-- Seventh-->
+		<button v-on:click="enableList">Show List</button>
+
+	</div>
+</div>
+
+
+<script>
+	new Vue ({
+
+		el: '#app', 
+		data: {
+			message: 'This is vue Series',
+			className: 'alert alert-danger',
+			show: true, 
+			// show:false, // the element will show if the show == true.
+			lists:['Facebook','Youtube', 'Twitter', 'Linkedin'],
+			list1: [
+				{name: 'Facebook'},
+				{name: 'Youtube'},
+				{name: 'Google'},
+				{Social: 'Twitter'},
+
+			],
+			visible:false,
+		},
+		methods:{
+			enableList:function(){
+				this.visible = true;
+			}
+		}
+
+	});
+</script>
+
+
+
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+</body>
+</html>

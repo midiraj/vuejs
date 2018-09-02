@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Second Lecture</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container">
+		<div id="app">
+			<!-- <h4 v-bind:style="styleSection">Speed of Sound</h4><br> -->
+			<h4 :style="styleSection" :title="title">Speed of Sound</h4><br>
+			<h3 v-bind:class="{'alert alert-success':isActive, 'col-lg-6':isMin}">Speed of light</h3>
+			<h3 :class="[isActive ? 'alert alert-success' : 'alert alert-danger']">Speed of Universe</h3>
+
+		</div>
+	</div>
+
+
+	<script>
+		
+		new Vue({
+			el: '#app',
+
+			data: {
+				className:'alert alert-success',
+				isActive: true,
+				isMin:true,
+				title: 'This is the best title in the world',
+				styleSection: {
+					color: 'red', 
+					border: '2px solid black',
+				}
+			}
+			
+		});
+
+
+	</script>
+
+</body>
+</html>

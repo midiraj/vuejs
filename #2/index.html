@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Second Lecture</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container">
+		<div id="app">
+			<!-- <h1>Method : {{reverseM()}}</h1>
+			<h1>Method : {{reverseM()}}</h1>
+			<h1>Method : {{reverseM()}}</h1>
+			<h1>Method : {{reverseM()}}</h1>
+
+			<h1>Computed : {{reverseC}}</h1>
+			<h1>Computed : {{reverseC}}</h1>
+			<h1>Computed : {{reverseC}}</h1>
+			<h1>Computed : {{reverseC}}</h1> -->
+			<!-- <input type="text" name="" v-model='km'>
+			<input type="text" name="" v-model='m'> -->
+
+			<input type="text" name="" v-model="fullName">
+			<h1>{{firstName}}</h1>
+			<h1>{{lastName}}</h1>
+
+		</div>
+	</div>
+
+
+	<script>
+		
+		new Vue({
+			el: '#app',
+			data: {
+				messageM: 'This is Second Lecture',
+				km:0,
+				m:0,
+				firstName: 'Shekh',
+				lastName: 'Deep'
+			},
+			methods:{
+				reverseM:function(){
+					// return this.message.split('').reverse().join('');
+					return Date.now();
+				}
+			},
+			// Difference between computed and method properties: 
+			computed:{
+				reverseC:function(){
+					// return this.message.split('').reverse().join('');
+					return Date.now();
+				},
+
+				fullName:{
+				// getter:
+					get: function () {
+						return this.firstName + ' ' + this.lastName;
+					},
+				//setter
+					set: function(name) {
+						var name = name.split(' ');
+						this.firstName = name[0];
+						this.lastName = name[name.length - 1];
+						// this.lastName = name[1];
+					}
+
+				}
+			},
+			watch:{
+				km: function(val){
+					this.km = val;
+					this.m = val * 1000;
+				},
+
+				m: function(val){
+					this.m = val;
+					this.km = val/1000;
+				}
+
+			}
+		});
+
+
+	</script>
+
+</body>
+</html>
