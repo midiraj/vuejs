@@ -6,7 +6,7 @@ Vue.component('btn', {
 	`,
 	methods:{
 		launch(){
-			this.$emit('buttonIsClicked');
+			this.$emit('button-is-clicked');
 		}
 	}
 });
@@ -14,28 +14,33 @@ Vue.component('btn', {
 Vue.component('modal',{
 	template:
 	`
-		<div class="modal" :class='active'>
+		<div class="modal" :class='jamal'>
 		  <div class="modal-background"></div>
 		  <div class="modal-card">
 		    <header class="modal-card-head">
 		      <p class="modal-card-title">
 		      	<slot></slot>
 		      </p>
-		      <button class="delete" aria-label="close"></button>
+		      <button class="delete" aria-label="close" @click='closeModal'></button>
 		    </header>
 		    <section class="modal-card-body" >
 		      <slot name='section'></slot>
 		    </section>
 		    <footer class="modal-card-foot">
 		      <button class="button is-success">Save changes</button>
-		      <button class="button">Cancel</button>
+		      <button class="button" @click='closeModal'>Cancel</button>
 		    </footer>
 		  </div>
 		</div>
 	`,
 	props:[
-		'active',
-	]
+		'jamal',
+	],
+	methods:{
+		closeModal(){
+			this.$emit('close_modal');
+		}
+	}
 
 });
 
@@ -47,7 +52,11 @@ new Vue({
 	},
 	methods:{
 		launchModal(){
-			this.activeModal = 'is-active';	
+			this.activeModal = 'is-active';
+			// console.log('Deep');	
+		},
+		close(){
+			this.activeModal = '';
 		}
 	}
 
